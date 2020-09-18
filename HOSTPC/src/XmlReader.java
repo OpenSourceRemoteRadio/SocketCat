@@ -66,21 +66,12 @@ public class XmlReader {
 	 * @throws FileNotFoundException 
 	 * 
 	 */
-        public XmlReader(String XML_Path) throws XMLStreamException, FileNotFoundException,SecurityException 
+    public XmlReader(String XML_Path) throws XMLStreamException, FileNotFoundException,SecurityException 
 	{
 		InputStream xml_input_stream = null;
 		XMLInputFactory factory = XMLInputFactory.newInstance();
-					//InputStream xml_input_stream = new FileInputStream(XML_Path);
-		try { //check to avoid resource leak..
-			xml_input_stream = new FileInputStream(XML_Path);
-			this.setXML_Stream_Reader(factory.createXMLStreamReader(xml_input_stream));
-		} finally {try {
-			xml_input_stream.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}}
-		
+		xml_input_stream = new FileInputStream(XML_Path);
+		this.setXML_Stream_Reader(factory.createXMLStreamReader(xml_input_stream));
 	}
 	
 	
